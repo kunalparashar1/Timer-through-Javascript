@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>coundown (bykunal)</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+        <table class="container" cellpadding="5px">
+		<tr class="info">
+			<td id="days"></td>
+			<td id="hrs"></td>
+			<td id="min"></td>
+			<td id="sec"></td>
+		</tr>
+		<tr>
+			<td>days</td>
+			<td>hours</td>
+			<td>minutes</td>
+			<td>seconds</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function countDown()
+		{
+			var today = new Date();
+			var eventDate = new Date("January 1 ,2020 00:00:00");
+
+			var currentTime = today.getTime();
+			var eventTime = eventDate.getTime();
+
+			var remTime = eventTime - currentTime;
+
+			var sec = Math.floor(remTime/1000);
+			var min = Math.floor(sec/60);
+			var hrs = Math.floor(min/60);
+			var days = Math.floor(hrs/24);
+
+
+			hrs = hrs % 24;
+			min%= 60;
+			sec%= 60;
+
+			hrs = (hrs<10) ? "0"+hrs : hrs;
+			min = (min<10) ? "0"+min : min;
+			sec = (sec<10) ? "0"+sec : sec;
+ 
+
+			document.getElementById("days").innerHTML =days;
+			document.getElementById("hrs").innerHTML =":"+hrs;
+			document.getElementById("min").innerHTML =":"+min;
+			document.getElementById("sec").innerHTML =":"+sec; 
+
+			setTimeout(countDown,1000);
+		}
+
+		countDown();
+	</script>
+
+</body>
+</html>
